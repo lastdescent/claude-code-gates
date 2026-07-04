@@ -1,0 +1,33 @@
+{
+  "hooks": {
+    "SessionStart": [
+      { "hooks": [
+        { "type": "command", "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/docs-session-start.py\"" }
+      ] }
+    ],
+    "PreToolUse": [
+      { "matcher": "Write|Edit|MultiEdit|NotebookEdit", "hooks": [
+        { "type": "command", "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/edit-guard.py\"" }
+      ] }
+    ],
+    "PostToolUse": [
+      { "matcher": "Write|Edit|MultiEdit|NotebookEdit|Bash", "hooks": [
+        { "type": "command", "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/docs-track.py\"" }
+      ] },
+      { "matcher": "Read|Write|Edit|MultiEdit|NotebookEdit|Bash", "hooks": [
+        { "type": "command", "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/debt-track.py\"" }
+      ] }
+    ],
+    "Stop": [
+      { "hooks": [
+        { "type": "command", "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/docs-stop-gate.py\"" },
+        { "type": "command", "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/debt-stop-gate.py\"", "timeout": 300 }
+      ] }
+    ],
+    "SessionEnd": [
+      { "hooks": [
+        { "type": "command", "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/docs-session-end.py\"" }
+      ] }
+    ]
+  }
+}

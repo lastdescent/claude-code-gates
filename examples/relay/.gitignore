@@ -1,0 +1,9 @@
+
+# claude-code-gates session state
+.claude/hooks/.docs-*
+.claude/hooks/.debt-*
+.claude/hooks/.gate-log.jsonl*
+__pycache__/
+*.db
+*.db-wal
+*.db-shm

@@ -1,0 +1,6 @@
+# Transient state written by the docs-tracking hooks (one file pair per session)
+.claude/hooks/.docs-pending-*
+.claude/hooks/.docs-baseline-*
+# Session ledgers written by debt-track.py / edit-guard.py, and the gate log
+.claude/hooks/.debt-*
+.claude/hooks/.gate-log.jsonl*
